@@ -5,7 +5,7 @@ import { useCustomization } from "../contexts/customization";
 
 const Chair = (props) => {
   const { nodes, materials } = useGLTF("./models/chair.gltf");
-  const { material, legs } = useCustomization();
+  const { material, legs, chairColor, cushionColor } = useCustomization();
 
   const leatherTexture = useTexture({
     map: "/textures/leather/Leather_008_Base Color.jpg",
@@ -14,14 +14,14 @@ const Chair = (props) => {
     aoMap: "/textures/leather/Leather_008_Ambient Occlusion.jpg",
   });
 
-  leatherTexture.map.repeat.set(3, 3);
+  // leatherTexture.map.repeat.set(3, 3);
   leatherTexture.normalMap.repeat.set(3, 3);
   leatherTexture.roughnessMap.repeat.set(3, 3);
   leatherTexture.aoMap.repeat.set(3, 3);
 
-  leatherTexture.map.wrapS =
-    leatherTexture.map.wrapT =
-    leatherTexture.normalMap.wrapS =
+  // leatherTexture.map.wrapS =
+  //   leatherTexture.map.wrapT =
+  leatherTexture.normalMap.wrapS =
     leatherTexture.normalMap.wrapT =
     leatherTexture.roughnessMap.wrapS =
     leatherTexture.roughnessMap.wrapT =
@@ -30,20 +30,20 @@ const Chair = (props) => {
       THREE.RepeatWrapping;
 
   const fabricTexture = useTexture({
-    map: "/textures/fabric/Fabric_Knitted_006_basecolor.jpg",
+    // map: "/textures/fabric/Fabric_Knitted_006_basecolor.jpg",
     normalMap: "/textures/fabric/Fabric_Knitted_006_normal.jpg",
     roughnessMap: "/textures/fabric/Fabric_Knitted_006_roughness.jpg",
     aoMap: "/textures/fabric/Fabric_Knitted_006_ambientOcclusion.jpg",
   });
 
-  fabricTexture.map.repeat.set(3, 3);
+  // fabricTexture.map.repeat.set(3, 3);
   fabricTexture.normalMap.repeat.set(3, 3);
   fabricTexture.roughnessMap.repeat.set(3, 3);
   fabricTexture.aoMap.repeat.set(3, 3);
 
-  fabricTexture.map.wrapS =
-    fabricTexture.map.wrapT =
-    fabricTexture.normalMap.wrapS =
+  // fabricTexture.map.wrapS =
+  //   fabricTexture.map.wrapT =
+  fabricTexture.normalMap.wrapS =
     fabricTexture.normalMap.wrapT =
     fabricTexture.roughnessMap.wrapS =
     fabricTexture.roughnessMap.wrapT =
@@ -55,11 +55,12 @@ const Chair = (props) => {
     <group {...props} dispose={null}>
       <mesh geometry={nodes.Chair.geometry}>
         <meshStandardMaterial
+          color={chairColor.color}
           {...(material === "leather" ? leatherTexture : fabricTexture)}
         />
       </mesh>
       <mesh geometry={nodes.Cushion.geometry} position={[0, 0.064, 0.045]}>
-        <meshStandardMaterial {...fabricTexture} />
+        <meshStandardMaterial {...fabricTexture} color={cushionColor.color} />
       </mesh>
 
       <mesh
