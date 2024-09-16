@@ -8,10 +8,10 @@ const Chair = (props) => {
   const { material, legs, chairColor, cushionColor } = useCustomization();
 
   const leatherTexture = useTexture({
-    map: "/textures/leather/Leather_008_Base Color.jpg",
+    map: "/textures/leather/Leather_008_Base%20Color.jpg",
     normalMap: "/textures/leather/Leather_008_Normal.jpg",
     roughnessMap: "/textures/leather/Leather_008_Roughness.jpg",
-    aoMap: "/textures/leather/Leather_008_Ambient Occlusion.jpg",
+    aoMap: "/textures/leather/Leather_008_Ambient%20Occlusion.jpg",
   });
 
   // leatherTexture.map.repeat.set(3, 3);
