@@ -1,0 +1,73 @@
+import React from "react";
+import { useGLTF, useTexture } from "@react-three/drei";
+import * as THREE from "three";
+
+const Chair = (props) => {
+  const { nodes, materials } = useGLTF("./models/chair.gltf");
+
+  const leatherTexture = useTexture({
+    map: "/textures/leather/Leather_008_Base Color.jpg",
+    normalMap: "/textures/leather/Leather_008_Normal.jpg",
+    roughnessMap: "/textures/leather/Leather_008_Roughness.jpg",
+    aoMap: "/textures/leather/Leather_008_Ambient Occlusion.jpg",
+  });
+
+  leatherTexture.map.repeat.set(3, 3);
+  leatherTexture.normalMap.repeat.set(3, 3);
+  leatherTexture.roughnessMap.repeat.set(3, 3);
+  leatherTexture.aoMap.repeat.set(3, 3);
+
+  leatherTexture.map.wrapS =
+    leatherTexture.map.wrapT =
+    leatherTexture.normalMap.wrapS =
+    leatherTexture.normalMap.wrapT =
+    leatherTexture.roughnessMap.wrapS =
+    leatherTexture.roughnessMap.wrapT =
+    leatherTexture.aoMap.wrapS =
+    leatherTexture.aoMap.wrapT =
+      THREE.RepeatWrapping;
+
+  const fabricTexture = useTexture({
+    map: "/textures/fabric/Fabric_Knitted_006_basecolor.jpg",
+    normalMap: "/textures/fabric/Fabric_Knitted_006_normal.jpg",
+    roughnessMap: "/textures/fabric/Fabric_Knitted_006_roughness.jpg",
+    aoMap: "/textures/fabric/Fabric_Knitted_006_ambientOcclusion.jpg",
+  });
+
+  fabricTexture.map.repeat.set(3, 3);
+  fabricTexture.normalMap.repeat.set(3, 3);
+  fabricTexture.roughnessMap.repeat.set(3, 3);
+  fabricTexture.aoMap.repeat.set(3, 3);
+
+  fabricTexture.map.wrapS =
+    fabricTexture.map.wrapT =
+    fabricTexture.normalMap.wrapS =
+    fabricTexture.normalMap.wrapT =
+    fabricTexture.roughnessMap.wrapS =
+    fabricTexture.roughnessMap.wrapT =
+    fabricTexture.aoMap.wrapS =
+    fabricTexture.aoMap.wrapT =
+      THREE.RepeatWrapping;
+
+  return (
+    <group {...props} dispose={null}>
+      <mesh geometry={nodes.Chair.geometry}>
+        <meshStandardMaterial {...leatherTexture} />
+      </mesh>
+      <mesh geometry={nodes.Cushion.geometry} position={[0, 0.064, 0.045]}>
+        <meshStandardMaterial {...fabricTexture} />
+      </mesh>
+
+      <mesh geometry={nodes.Legs1.geometry} material={materials.Legs} />
+      <mesh
+        geometry={nodes.Legs2.geometry}
+        material={materials.Legs}
+        visible={false}
+      />
+    </group>
+  );
+};
+
+useGLTF.preload("./models/chair.gltf");
+
+export default Chair;
