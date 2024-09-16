@@ -8,10 +8,13 @@ const Chair = (props) => {
   const { material, legs, chairColor, cushionColor } = useCustomization();
 
   const leatherTexture = useTexture({
-    map: "/textures/leather/Leather_008_Base%20Color.jpg",
-    normalMap: "/textures/leather/Leather_008_Normal.jpg",
-    roughnessMap: "/textures/leather/Leather_008_Roughness.jpg",
-    aoMap: "/textures/leather/Leather_008_Ambient%20Occlusion.jpg",
+    // map: "https://yashchincholi.github.io/Chair/textures/leather/Leather_008_Base%20Color.jpg",
+    normalMap:
+      "https://yashchincholi.github.io/Chair/textures/leather/Leather_008_Normal.jpg",
+    roughnessMap:
+      "https://yashchincholi.github.io/Chair/textures/leather/Leather_008_Roughness.jpg",
+    aoMap:
+      "https://yashchincholi.github.io/Chair/textures/leather/Leather_008_Ambient%20Occlusion.jpg",
   });
 
   // leatherTexture.map.repeat.set(3, 3);
@@ -30,10 +33,13 @@ const Chair = (props) => {
       THREE.RepeatWrapping;
 
   const fabricTexture = useTexture({
-    // map: "/textures/fabric/Fabric_Knitted_006_basecolor.jpg",
-    normalMap: "/textures/fabric/Fabric_Knitted_006_normal.jpg",
-    roughnessMap: "/textures/fabric/Fabric_Knitted_006_roughness.jpg",
-    aoMap: "/textures/fabric/Fabric_Knitted_006_ambientOcclusion.jpg",
+    // map: "https://yashchincholi.github.io/Chair/textures/fabric/Fabric_Knitted_006_basecolor.jpg",
+    normalMap:
+      "https://yashchincholi.github.io/Chair/textures/fabric/Fabric_Knitted_006_normal.jpg",
+    roughnessMap:
+      "https://yashchincholi.github.io/Chair/textures/fabric/Fabric_Knitted_006_roughness.jpg",
+    aoMap:
+      "https://yashchincholi.github.io/Chair/textures/fabric/Fabric_Knitted_006_ambientOcclusion.jpg",
   });
 
   // fabricTexture.map.repeat.set(3, 3);
